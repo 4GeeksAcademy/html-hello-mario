@@ -1,9 +1,8 @@
 /* =========================================================
-   styles.css · Sitio personal de Mario
-   Diseño basado en Flexbox · Sin float ni inline-block en layout
+   styles.css · Sitio personal de Mario (optimizado)
    ========================================================= */
 
-/* ---------- Variables (fuente única de verdad) ---------- */
+/* ---------- Variables ---------- */
 :root {
   --bg-dark: #0f0e17;
   --bg-dark-2: #1a1930;
@@ -14,26 +13,18 @@
   --muted: #a7a9be;
   --card-bg: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.12);
-
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 3rem;
-
   --container-pad: 5vw;
-  --font-main: system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", sans-serif;
+  --font-main: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* ---------- Reset ---------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* ---------- Foco visible (accesibilidad) ---------- */
 :focus-visible {
@@ -42,7 +33,6 @@
   border-radius: 4px;
 }
 
-/* Enlace "saltar al contenido" */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -56,14 +46,9 @@
   text-decoration: none;
   transition: top 0.2s ease;
 }
+.skip-link:focus { top: 0; }
 
-.skip-link:focus {
-  top: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-main);
@@ -72,14 +57,12 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- Barra de navegación (flex) ---------- */
+/* ---------- Barra de navegación ---------- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex;               /* layout principal */
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-sm);
@@ -98,16 +81,13 @@ body {
   text-decoration: none;
 }
 
-.logo span {
-  color: var(--accent);
-}
+.logo span { color: var(--accent); }
 
 .nav {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
-
 .nav a {
   color: var(--muted);
   text-decoration: none;
@@ -115,15 +95,12 @@ body {
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
+.nav a:hover { color: var(--accent); }
 
-.nav a:hover {
-  color: var(--accent);
-}
-
-/* ---------- Secciones de altura completa ---------- */
+/* ---------- Secciones ---------- */
 .section {
   min-height: 100vh;
-  display: flex;               /* centrado vertical */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6rem var(--container-pad);
@@ -153,20 +130,12 @@ body {
   font-size: clamp(3rem, 10vw, 7rem);
   line-height: 1.05;
   letter-spacing: 2px;
-  /* Texto legible por defecto (fallback) */
+  /* Degradado en texto con fallback: color naranja si no soporta background-clip:text */
   color: var(--accent);
-  /* Degradado cuando el navegador lo soporta */
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Si no soporta recorte de fondo, se usa el color de respaldo */
-@supports not (-webkit-background-clip: text) {
-  .hero h1 {
-    color: var(--accent);
-  }
 }
 
 .hero p {
@@ -176,7 +145,7 @@ body {
   font-size: clamp(1rem, 2vw, 1.25rem);
 }
 
-/* ---------- Botones (compartidos) ---------- */
+/* ---------- Botones ---------- */
 .btn {
   padding: 0.85rem 2rem;
   border-radius: 999px;
@@ -184,17 +153,14 @@ body {
   text-decoration: none;
   transition: transform 0.2s ease, background 0.2s ease;
 }
-
 .btn-primary {
   background: var(--accent);
   color: #1a1206;
 }
-
 .btn-primary:hover {
   background: #ffa12e;
   transform: translateY(-2px);
 }
-
 .btn-ghost {
   border: 2px solid var(--border);
   color: var(--text);
@@ -207,13 +173,13 @@ body {
 }
 
 .actions {
-  display: flex;               /* contenedor de botones */
+  display: flex;
   gap: var(--space-sm);
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* ---------- Encabezados comunes (DRY) ---------- */
+/* ---------- Encabezados comunes ---------- */
 .eyebrow {
   color: var(--accent);
   text-transform: uppercase;
@@ -234,15 +200,11 @@ body {
   margin-bottom: 2.5rem;
 }
 
-/* =========================================================
-   Sobre mí
-   ========================================================= */
-.about {
-  background: var(--bg-dark);
-}
+/* ---------- Sobre mí ---------- */
+.about { background: var(--bg-dark); }
 
 .about-content {
-  display: flex;               /* texto + retrato en columnas */
+  display: flex;
   flex-wrap: wrap;
   gap: var(--space-lg);
   align-items: center;
@@ -253,19 +215,14 @@ body {
   flex: 1 1 320px;
   max-width: 620px;
 }
-
 .about-text p {
   color: var(--muted);
   margin-bottom: 1.25rem;
 }
+.about-text strong { color: var(--text); }
 
-.about-text strong {
-  color: var(--text);
-}
-
-/* Datos como lista con Flexbox */
 .stats {
-  display: flex;               /* métricas en fila */
+  display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-top: 1.5rem;
@@ -281,20 +238,17 @@ body {
   padding: 1.25rem;
   text-align: center;
 }
-
 .stat .num {
   display: block;
   font-size: 2rem;
   font-weight: 800;
   color: var(--accent);
 }
-
 .stat .label {
   font-size: 0.85rem;
   color: var(--muted);
 }
 
-/* Retrato (figure) */
 .portrait {
   flex: 0 1 360px;
   background:
@@ -303,7 +257,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-md);
-  display: flex;               /* contenido centrado */
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -311,7 +265,6 @@ body {
   text-align: center;
   color: #ffd8a8;
 }
-
 .portrait img {
   display: block;
   width: 100%;
@@ -319,16 +272,13 @@ body {
   height: auto;
   border-radius: var(--radius-lg);
 }
-
 .portrait figcaption {
   font-size: 0.85rem;
   color: var(--muted);
   max-width: 300px;
 }
 
-/* =========================================================
-   Trayectoria profesional
-   ========================================================= */
+/* ---------- Trayectoria profesional ---------- */
 .career {
   background: linear-gradient(180deg, var(--bg-dark-2) 0%, var(--bg-dark) 100%);
 }
@@ -344,15 +294,12 @@ body {
 
 .timeline-item {
   position: relative;
-  display: flex;               /* cada hito: fecha sobre el título */
+  display: flex;
   flex-direction: column;
   padding-bottom: var(--space-md);
 }
 
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
-
+.timeline-item:last-child { padding-bottom: 0; }
 .timeline-item::before {
   content: "";
   position: absolute;
@@ -364,7 +311,6 @@ body {
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(255, 137, 6, 0.2);
 }
-
 .timeline-item time {
   font-size: 0.8rem;
   font-weight: 700;
@@ -373,27 +319,20 @@ body {
   color: var(--accent-2);
   margin-bottom: 0.25rem;
 }
-
 .timeline-item h3 {
   font-size: 1.2rem;
   margin-bottom: 0.35rem;
 }
-
 .timeline-item p {
   color: var(--muted);
   font-size: 0.95rem;
 }
 
-/* =========================================================
-   Próximos espectáculos
-   ========================================================= */
-.shows {
-  background: var(--bg-dark-3);
-}
+/* ---------- Próximos espectáculos ---------- */
+.shows { background: var(--bg-dark-3); }
 
-/* Rejilla de tarjetas con Flexbox */
 .cards {
-  display: flex;               /* contenedor de tarjetas */
+  display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
@@ -407,12 +346,10 @@ body {
   padding: 1.75rem;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
-
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
 }
-
 .card .date {
   font-size: 0.8rem;
   font-weight: 700;
@@ -422,12 +359,10 @@ body {
   margin-bottom: 0.75rem;
   display: block;
 }
-
 .card h3 {
   font-size: 1.3rem;
   margin-bottom: 0.4rem;
 }
-
 .card .place {
   color: var(--accent-2);
   font-weight: 600;
@@ -435,15 +370,12 @@ body {
   margin-bottom: 0.75rem;
   display: block;
 }
-
 .card p {
   color: var(--muted);
   font-size: 0.95rem;
 }
 
-/* =========================================================
-   Pie de página
-   ========================================================= */
+/* ---------- Pie de página ---------- */
 footer {
   border-top: 1px solid var(--border);
   padding: var(--space-md) var(--container-pad);
@@ -451,47 +383,30 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
 }
-
 footer a {
   color: var(--accent);
   text-decoration: none;
 }
 
-/* =========================================================
-   Responsive
-   ========================================================= */
+/* ---------- Responsive ---------- */
 @media (max-width: 760px) {
   .navbar {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem var(--space-sm);
   }
-
   .nav {
     gap: var(--space-sm);
     justify-content: center;
   }
-
-  .about-content {
-    gap: var(--space-md);
-  }
-
-  .section {
-    padding: 5rem 1.5rem;
-  }
+  .about-content { gap: var(--space-md); }
+  .section { padding: 5rem 1.5rem; }
 }
 
-/* =========================================================
-   Movimiento reducido (accesibilidad)
-   ========================================================= */
+/* ---------- Movimiento reducido (accesibilidad) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
