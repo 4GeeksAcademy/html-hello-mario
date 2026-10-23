@@ -1,0 +1,500 @@
+/* =========================================================
+   styles.css · Sitio personal de Mario
+   Diseño basado en Flexbox · Sin float ni inline-block en layout
+   ========================================================= */
+
+/* ---------- Variables (fuente única de verdad) ---------- */
+:root {
+  --bg-dark: #0f0e17;
+  --bg-dark-2: #1a1930;
+  --bg-dark-3: #201a2e;
+  --accent: #ff8906;
+  --accent-2: #e53170;
+  --text: #fffffe;
+  --muted: #a7a9be;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.12);
+
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+
+  --container-pad: 5vw;
+  --font-main: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Foco visible (accesibilidad) ---------- */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Enlace "saltar al contenido" */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 200;
+  background: var(--accent);
+  color: #1a1206;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ---------- Barra de navegación (flex) ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;               /* layout principal */
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--container-pad);
+  background: rgba(15, 14, 23, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Secciones de altura completa ---------- */
+.section {
+  min-height: 100vh;
+  display: flex;               /* centrado vertical */
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem var(--container-pad);
+  scroll-margin-top: 4rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(229, 49, 112, 0.35), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(255, 137, 6, 0.3), transparent 45%),
+    linear-gradient(160deg, var(--bg-dark) 0%, var(--bg-dark-2) 100%);
+  text-align: center;
+  align-items: center;
+}
+
+.hero .eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1.05;
+  letter-spacing: 2px;
+  /* Texto legible por defecto (fallback) */
+  color: var(--accent);
+  /* Degradado cuando el navegador lo soporta */
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Si no soporta recorte de fondo, se usa el color de respaldo */
+@supports not (-webkit-background-clip: text) {
+  .hero h1 {
+    color: var(--accent);
+  }
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 1.5rem auto 2.5rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* ---------- Botones (compartidos) ---------- */
+.btn {
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #1a1206;
+}
+
+.btn-primary:hover {
+  background: #ffa12e;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 2px solid var(--border);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.actions {
+  display: flex;               /* contenedor de botones */
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Encabezados comunes (DRY) ---------- */
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin: 0.5rem 0 var(--space-sm);
+}
+
+.section .lead {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+}
+
+/* =========================================================
+   Sobre mí
+   ========================================================= */
+.about {
+  background: var(--bg-dark);
+}
+
+.about-content {
+  display: flex;               /* texto + retrato en columnas */
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-text {
+  flex: 1 1 320px;
+  max-width: 620px;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.about-text strong {
+  color: var(--text);
+}
+
+/* Datos como lista con Flexbox */
+.stats {
+  display: flex;               /* métricas en fila */
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.stat {
+  flex: 1 1 130px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.stat .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.stat .label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Retrato (figure) */
+.portrait {
+  flex: 0 1 360px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 137, 6, 0.25), transparent 60%),
+    var(--bg-dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-md);
+  display: flex;               /* contenido centrado */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  text-align: center;
+  color: #ffd8a8;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
+.portrait figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 300px;
+}
+
+/* =========================================================
+   Trayectoria profesional
+   ========================================================= */
+.career {
+  background: linear-gradient(180deg, var(--bg-dark-2) 0%, var(--bg-dark) 100%);
+}
+
+.timeline {
+  position: relative;
+  margin-left: var(--space-sm);
+  border-left: 2px solid var(--accent);
+  padding-left: var(--space-md);
+  max-width: 760px;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;               /* cada hito: fecha sobre el título */
+  flex-direction: column;
+  padding-bottom: var(--space-md);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.55rem;
+  top: 0.45rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 137, 6, 0.2);
+}
+
+.timeline-item time {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.timeline-item p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   Próximos espectáculos
+   ========================================================= */
+.shows {
+  background: var(--bg-dark-3);
+}
+
+/* Rejilla de tarjetas con Flexbox */
+.cards {
+  display: flex;               /* contenedor de tarjetas */
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  flex: 1 1 260px;
+  max-width: 360px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card .date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.card .place {
+  color: var(--accent-2);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   Pie de página
+   ========================================================= */
+footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-md) var(--container-pad);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 760px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem var(--space-sm);
+  }
+
+  .nav {
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .about-content {
+    gap: var(--space-md);
+  }
+
+  .section {
+    padding: 5rem 1.5rem;
+  }
+}
+
+/* =========================================================
+   Movimiento reducido (accesibilidad)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+}

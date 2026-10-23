@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Retrato estilizado de Mario</title>
+  <desc id="descripcion">Mario cantando bajo un foco de luz sobre el escenario, con micro y manos en alto.</desc>
+
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1930"/>
+      <stop offset="100%" stop-color="#0f0e17"/>
+    </linearGradient>
+    <radialGradient id="foco" cx="0.5" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#ff8906" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#ff8906" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff8906" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo del escenario -->
+  <rect width="300" height="240" fill="url(#fondo)"/>
+
+  <!-- Haz de luz del foco -->
+  <polygon points="150,10 95,240 205,240" fill="url(#foco)"/>
+
+  <!-- Cabeza y cuerpo de Mario (silueta) -->
+  <g fill="#10101d">
+    <circle cx="150" cy="96" r="30"/>
+    <path d="M150 132
+             C 104 132, 92 166, 92 190
+             L 92 240 L 208 240 L 208 190
+             C 208 166, 196 132, 150 132 Z"/>
+  </g>
+
+  <!-- Micro / mango en mano -->
+  <g stroke="#a7a9be" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M150 146 L150 208"/>
+  </g>
+  <circle cx="150" cy="142" r="7" fill="#fffffe"/>
+  <circle cx="150" cy="142" r="3.5" fill="#84869e"/>
+
+  <!-- Mano en alto -->
+  <circle cx="196" cy="118" r="9" fill="#10101d"/>
+
+  <!-- Puntos de luz / ambiente -->
+  <g fill="#e53170" opacity="0.55">
+    <circle cx="56" cy="70" r="3"/>
+    <circle cx="244" cy="60" r="2.5"/>
+    <circle cx="70" cy="180" r="2"/>
+    <circle cx="238" cy="150" r="2.5"/>
+  </g>
+
+  <!-- Texto de marca -->
+  <text x="150" y="224" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#a7a9be">MARIO</text>
+</svg>

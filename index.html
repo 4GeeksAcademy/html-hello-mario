@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitio personal de Mario, artista escénico y productor musical: sobre mí, trayectoria profesional y próximos espectáculos.">
+  <title>Mario · Artista &amp; Productor</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <!-- ============ Datos estructurados (Schema.org) ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "#mario",
+        "name": "Mario",
+        "url": "https://mario.example.com/",
+        "image": "portrait.svg",
+        "description": "Artista escénico y productor musical. Más de una década creando espectáculos entre la música en vivo, el teatro y la producción creativa.",
+        "knowsAbout": ["Música en vivo", "Teatro", "Producción musical"],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Artista escénico"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Sello Horizonte"
+        },
+        "memberOf": {
+          "@type": "MusicGroup",
+          "name": "Banda de Mario"
+        }
+      },
+      {
+        "@type": "MusicAlbum",
+        "@id": "#album-noches-de-neon",
+        "name": "Noches de neón",
+        "genre": "Pop",
+        "datePublished": "2017",
+        "byArtist": { "@id": "#mario" }
+      },
+      {
+        "@type": "MusicEvent",
+        "@id": "#evento-1",
+        "name": "Horizonte — Estreno",
+        "startDate": "2026-01-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Teatro Principal",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Madrid"
+          }
+        },
+        "performer": { "@id": "#mario" }
+      },
+      {
+        "@type": "MusicEvent",
+        "@id": "#evento-2",
+        "name": "Concierto acústico",
+        "startDate": "2026-03-02",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Sala Luz",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Barcelona"
+          }
+        },
+        "performer": { "@id": "#mario" }
+      },
+      {
+        "@type": "MusicEvent",
+        "@id": "#evento-3",
+        "name": "Noche de neón",
+        "startDate": "2026-04-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Auditorio del Mar",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Valencia"
+          }
+        },
+        "performer": { "@id": "#mario" }
+      },
+      {
+        "@type": "MusicEvent",
+        "@id": "#evento-4",
+        "name": "Clausura de temporada",
+        "startDate": "2026-06-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Festival Río Escena",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sevilla"
+          }
+        },
+        "performer": { "@id": "#mario" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Enlace de salto al contenido (accesibilidad) -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header class="navbar" role="banner">
+    <a href="#inicio" class="logo">MARIO<span>.</span></a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#espectaculos">Próximos espectáculos</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- SECCIÓN HERO -->
+    <section id="inicio" class="hero section" aria-labelledby="inicio-titulo">
+      <p class="eyebrow">Artista escénico · Productor musical</p>
+      <h1 id="inicio-titulo">MARIO</h1>
+      <p>Música, teatro y emoción en directo. Más de una década creando espectáculos que conectan con el público de principio a fin.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#espectaculos">Ver próximos shows</a>
+        <a class="btn btn-ghost" href="#sobre-mi">Conóceme</a>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SOBRE MÍ -->
+    <section id="sobre-mi" class="section about" aria-labelledby="sobre-mi-titulo">
+      <p class="eyebrow">01 · Sobre mí</p>
+      <h2 id="sobre-mi-titulo">Quién soy</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Me llamo <strong>Mario</strong> y llevo toda la vida subido a un escenario.
+            Empecé tocando en locales pequeños de barrio y hoy dirijo mis propios
+            espectáculos entre la <strong>música en vivo</strong>, el <strong>teatro</strong>
+            y la <strong>producción creativa</strong>.
+          </p>
+          <p>
+            Mi objetivo es simple: que cada función sea una experiencia inolvidable.
+            Trabajo con un equipo fijo de músicos, técnicos y creadores que comparten
+            mi obsesión por el detalle y la cercanía con el público.
+          </p>
+          <ul class="stats">
+            <li class="stat">
+              <span class="num">+400</span>
+              <span class="label">funciones en directo</span>
+            </li>
+            <li class="stat">
+              <span class="num">12</span>
+              <span class="label">años de carrera</span>
+            </li>
+            <li class="stat">
+              <span class="num">15</span>
+              <span class="label">ciudades visitadas</span>
+            </li>
+            <li class="stat">
+              <span class="num">3</span>
+              <span class="label">álbumes publicados</span>
+            </li>
+          </ul>
+        </div>
+        <figure class="portrait">
+          <img src="portrait.svg" alt="Retrato estilizado de Mario cantando sobre el escenario bajo un foco de luz">
+          <figcaption>Mario interpretando en directo, gira «Horizonte»</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECCIÓN TRAYECTORIA PROFESIONAL -->
+    <section id="trayectoria" class="section career" aria-labelledby="trayectoria-titulo">
+      <p class="eyebrow">02 · Trayectoria profesional</p>
+      <h2 id="trayectoria-titulo">Mi recorrido</h2>
+      <p class="lead">De los escenarios pequeños a las grandes giras, paso a paso.</p>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <time datetime="2014">2014</time>
+          <h3>Primera banda y shows locales</h3>
+          <p>Fundé mi primera agrupación y debuté en salas de mi ciudad natal.</p>
+        </li>
+        <li class="timeline-item">
+          <time datetime="2017">2017</time>
+          <h3>Primer disco en directo</h3>
+          <p>Publiqué «Noches de neón», grabado íntegramente en vivo ante 300 personas.</p>
+        </li>
+        <li class="timeline-item">
+          <time datetime="2020">2020</time>
+          <h3>Gira nacional</h3>
+          <p>Recorrimos 15 ciudades con un espectáculo escénico de gran formato.</p>
+        </li>
+        <li class="timeline-item">
+          <time datetime="2023">2023</time>
+          <h3>Producción y dirección</h3>
+          <p>Creé mi propio sello y comencé a producir espectáculos para otros artistas.</p>
+        </li>
+        <li class="timeline-item">
+          <time datetime="2026">2026</time>
+          <h3>Proyecto actual</h3>
+          <p>Nueva gira «Horizonte» con estreno confirmado para la próxima temporada.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SECCIÓN PRÓXIMOS ESPECTÁCULOS -->
+    <section id="espectaculos" class="section shows" aria-labelledby="espectaculos-titulo">
+      <p class="eyebrow">03 · Próximos espectáculos</p>
+      <h2 id="espectaculos-titulo">Agenda 2026</h2>
+      <p class="lead">No te pierdas las próximas fechas. Entradas disponibles en taquilla y online.</p>
+      <div class="cards">
+        <article class="card">
+          <time class="date" datetime="2026-01-12">12 · Ene · 2026</time>
+          <h3>Horizonte — Estreno</h3>
+          <span class="place">Teatro Principal · Madrid</span>
+          <p>Gran estreno de la nueva gira con formato escénico completo.</p>
+        </article>
+        <article class="card">
+          <time class="date" datetime="2026-03-02">02 · Mar · 2026</time>
+          <h3>Concierto acústico</h3>
+          <span class="place">Sala Luz · Barcelona</span>
+          <p>Formato íntimo, repertorio seleccionado y encuentro con el público.</p>
+        </article>
+        <article class="card">
+          <time class="date" datetime="2026-04-24">24 · Abr · 2026</time>
+          <h3>Noche de neón</h3>
+          <span class="place">Auditorio del Mar · Valencia</span>
+          <p>Celebración del décimo aniversario del primer disco en directo.</p>
+        </article>
+        <article class="card">
+          <time class="date" datetime="2026-06-11">11 · Jun · 2026</time>
+          <h3>Clausura de temporada</h3>
+          <span class="place">Festival Río Escena · Sevilla</span>
+          <p>Show especial con invitados y estrenos exclusivos de la gira.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>© 2026 Mario · <a href="#inicio">Volver arriba</a> · Hecho con HTML y CSS</p>
+  </footer>
+
+</body>
+</html>
